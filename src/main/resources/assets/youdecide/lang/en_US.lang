@@ -1,0 +1,8 @@
+itemGroup.You Decide=§cYou Decide!
+
+item.treepitch.name=Tree Pitch
+
+tile.EmptyBucket.name=Placable Empty Bucket
+tile.WaterBucket.name=Placable Water Bucket
+tile.LavaBucket.name=Placable Lava Bucket
+tile.MilkBucket.name=Placable Milk Bucket
