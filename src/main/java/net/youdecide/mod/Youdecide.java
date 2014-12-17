@@ -19,9 +19,13 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.youdecide.mod.block.EmptyBucket;
 import net.youdecide.mod.block.LavaBucket;
 import net.youdecide.mod.block.MilkBucket;
+import net.youdecide.mod.block.Statue;
 import net.youdecide.mod.block.WaterBucket;
+import net.youdecide.mod.commands.EnderChestCommand;
+import net.youdecide.mod.commands.HealCommand;
 import net.youdecide.mod.crafting.RecipeRemover;
 import net.youdecide.mod.handler.FuelHandler;
+import net.youdecide.mod.items.UDItem;
 import net.youdecide.mod.items.UDItem;
 import net.youdecide.mod.proxy.CommonProxy;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -32,6 +36,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -41,7 +46,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class Youdecide
 {
     public static final String MODID = "youdecide";
-    public static final String VERSION = "1.0.0";
+    public static final String VERSION = "1.1.1";
     
     
     
@@ -62,6 +67,7 @@ public class Youdecide
     
     //items
     public static Item itemtestitem;
+    public static Item itemBreadDough;
     
    
     
@@ -73,6 +79,8 @@ public class Youdecide
     public static Block blockWaterBucket;
     public static Block blockLavaBucket;
     public static Block blockMilkBucket;
+    
+    public static Block blockStatue;
    
     
     
@@ -112,20 +120,19 @@ public class Youdecide
     	
     	
     	
-    	itemTreePitch = new UDItem().setUnlocalizedName("treepitch");
-    	GameRegistry.registerItem(itemTreePitch, "treepitch");
+    	itemTreePitch = new UDItem("TreePitch", null);   	
+    	itemtestitem = new UDItem("testitem", null);
+    	itemBreadDough = new UDItem("BreadDough", "Bread Dough!");
+    	
+    	
       	
 
     	//Blocks
-    	
-    	
-    	
-    	
     	blockEmptyBucket = new EmptyBucket(Material.iron).setBlockName("EmptyBucket").setBlockTextureName("EmptyBucket");
     	blockWaterBucket = new WaterBucket(Material.iron).setBlockName("WaterBucket").setBlockTextureName("WaterBucket");
     	blockLavaBucket = new LavaBucket(Material.iron).setBlockName("LavaBucket").setBlockTextureName("LavaBucket");
     	blockMilkBucket = new MilkBucket(Material.iron).setBlockName("MilkBucket").setBlockTextureName("MilkBucket");
-    	      	
+    	blockStatue = new Statue(Material.rock).setBlockName("Statue").setBlockTextureName("Statue");	
     	
     	
     	
@@ -136,8 +143,17 @@ public class Youdecide
     	GameRegistry.registerBlock(blockLavaBucket, "LavaBucket");
     	GameRegistry.registerBlock(blockMilkBucket, "MilkBucket");
     	
-    	//Renderes
+    	GameRegistry.registerBlock(blockStatue, "Statue");
+    	
+    	//Renders
     	Proxy.registerRenderThings();
+    }
+    
+    
+    @EventHandler
+    public void serverLoad(FMLServerStartingEvent event) {
+    event.registerServerCommand(new EnderChestCommand());
+    event.registerServerCommand(new HealCommand());
     }
     
     @EventHandler
@@ -146,6 +162,13 @@ public class Youdecide
     	
     	//Recipes
     	RecipeRemover.removeRecipe();
+    	
+    	GameRegistry.addShapelessRecipe(new ItemStack(itemBreadDough, 2), new Object[]
+    			{Items.wheat, Items.wheat, Items.wheat, Items.water_bucket});
+    	
+    	
+    	//Smelting
+    	GameRegistry.addSmelting(itemBreadDough, new ItemStack(Items.bread), 0);
     	
     	
     	    	    	    	

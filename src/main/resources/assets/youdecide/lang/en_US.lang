@@ -1,6 +1,7 @@
 itemGroup.You Decide=§cYou Decide!
 
 item.treepitch.name=Tree Pitch
+item.BreadDough.name=Bread Dough
 
 tile.EmptyBucket.name=Placable Empty Bucket
 tile.WaterBucket.name=Placable Water Bucket
