@@ -18,6 +18,7 @@ import net.youdecide.mod.tileentity.TileEntityLavaBucket;
 import net.youdecide.mod.tileentity.TileEntityMilkBucket;
 import net.youdecide.mod.tileentity.TileEntityStatue;
 import net.youdecide.mod.tileentity.TileEntityWaterBucket;
+import com.jadarstudios.developercapes.DevCapes;
 
 
 public class ClientProxy extends CommonProxy {
@@ -45,6 +46,7 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityStatue.class, render5);
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(Youdecide.blockStatue), new ItemRender3D(new RenderStatue(), new TileEntityStatue()));
 		
+		DevCapes.getInstance().registerConfig("https://rawgit.com/lukasdragon/YouDecide/master/capes/capes.json", "A32D");
 	}
 	
 	public void registerTileEntitySpecialRenderer() {

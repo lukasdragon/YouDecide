@@ -23,13 +23,11 @@ public class RecipeRemover {
 			
 		  while(remover.hasNext()) {
 			  ItemStack itemstack = remover.next().getRecipeOutput();
-			  if(itemstack != null && itemstack.getItem() == Items.book){
+			  if(itemstack != null && itemstack.getItem() == Items.bread){
 				  remover.remove();
-			  }else if (itemstack != null && itemstack.getItem() == Items.flint_and_steel){
-				  remover.remove();
+			  }//else if
 			  }
 				  
 		  }
 	}
 
-}

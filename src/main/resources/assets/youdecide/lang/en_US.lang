@@ -7,3 +7,10 @@ tile.EmptyBucket.name=Placable Empty Bucket
 tile.WaterBucket.name=Placable Water Bucket
 tile.LavaBucket.name=Placable Lava Bucket
 tile.MilkBucket.name=Placable Milk Bucket
+
+tile.Statue.name=Statue
+item.Bullet.name=Bullet
+item.TreePitch.name=Tree Pitch
+
+achievement.Secret=The Most Secret Secret!
+achievement.Secret.desc=The Most Secret Description!
